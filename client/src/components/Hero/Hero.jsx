@@ -66,7 +66,7 @@ const Hero = () => {
   <Slide />
  <CollapsibleSection />
 
- <ContactSection />
+
     </>
   );
 };
