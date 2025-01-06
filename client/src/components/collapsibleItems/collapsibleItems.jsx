@@ -26,9 +26,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
-          both vertical and horizontal menus. Both menus are managed by single
-          assets. Where users can easily switch from vertical to horizontal menus.
+        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts “Full Width” and “Boxed” Layouts. So that user can switch their dashboard from one layout to another layout effortlessly.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -45,9 +43,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
-          both vertical and horizontal menus. Both menus are managed by single
-          assets. Where users can easily switch from vertical to horizontal menus.
+        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is also available in different types of Side Menu Styles. Where the users can change their Side Menu styles by using single assets.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -64,9 +60,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
-          both vertical and horizontal menus. Both menus are managed by single
-          assets. Where users can easily switch from vertical to horizontal menus.
+        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts "Fixed Layout" and "Scrollable Layout". Here users can switch their Template from one layout to another layout easily.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -83,9 +77,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
-          both vertical and horizontal menus. Both menus are managed by single
-          assets. Where users can easily switch from vertical to horizontal menus.
+        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is available in LRT & RTL versions with single assets. Using those single assets, it’s very easy to switch from one version to another version.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -102,9 +94,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
-          both vertical and horizontal menus. Both menus are managed by single
-          assets. Where users can easily switch from vertical to horizontal menus.
+        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is available in different types of color styles. Where the users can change their template completely with those color styles.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
