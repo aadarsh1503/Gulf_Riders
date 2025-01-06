@@ -23,27 +23,97 @@ const collapsibleItems = [
   },
   {
     title: 'Switch Easily From Full Width to Boxed Layout',
-    content: <p>Details for Full Width to Boxed Layout.</p>,
+    content: (
+      <>
+        <p>
+          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
+          both vertical and horizontal menus. Both menus are managed by single
+          assets. Where users can easily switch from vertical to horizontal menus.
+        </p>
+        <p>
+          <strong>Note:</strong> Please Refer full Documentation for more details.
+        </p>
+        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          Click here
+        </button>
+      </>
+    ),
     bgColor: 'border-pink-500 text-pink-500',
   },
   {
     title: 'Change Easily Side Menu Styles',
-    content: <p>Details for changing Side Menu Styles.</p>,
+    content: (
+      <>
+        <p>
+          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
+          both vertical and horizontal menus. Both menus are managed by single
+          assets. Where users can easily switch from vertical to horizontal menus.
+        </p>
+        <p>
+          <strong>Note:</strong> Please Refer full Documentation for more details.
+        </p>
+        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          Click here
+        </button>
+      </>
+    ),
     bgColor: 'border-orange-500 text-orange-500',
   },
   {
     title: 'Switch Easily From Fixed to Scrollable Layout',
-    content: <p>Details for switching from Fixed to Scrollable Layout.</p>,
+    content: (
+      <>
+        <p>
+          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
+          both vertical and horizontal menus. Both menus are managed by single
+          assets. Where users can easily switch from vertical to horizontal menus.
+        </p>
+        <p>
+          <strong>Note:</strong> Please Refer full Documentation for more details.
+        </p>
+        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          Click here
+        </button>
+      </>
+    ),
     bgColor: 'border-pink-500 text-pink-500',
   },
   {
     title: 'Switch Easily From LTR to RTL Version',
-    content: <p>Details for switching from LTR to RTL Version.</p>,
+    content: (
+      <>
+        <p>
+          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
+          both vertical and horizontal menus. Both menus are managed by single
+          assets. Where users can easily switch from vertical to horizontal menus.
+        </p>
+        <p>
+          <strong>Note:</strong> Please Refer full Documentation for more details.
+        </p>
+        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          Click here
+        </button>
+      </>
+    ),
     bgColor: 'border-green-500 text-green-500',
   },
   {
     title: 'Switch Easily From One Color to Another Color style',
-    content: <p>Details for switching from one color style to another.</p>,
+    content: (
+      <>
+        <p>
+          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
+          both vertical and horizontal menus. Both menus are managed by single
+          assets. Where users can easily switch from vertical to horizontal menus.
+        </p>
+        <p>
+          <strong>Note:</strong> Please Refer full Documentation for more details.
+        </p>
+        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+          Click here
+        </button>
+      </>
+    ),
     bgColor: 'border-blue-500 text-blue-500',
   },
 ];

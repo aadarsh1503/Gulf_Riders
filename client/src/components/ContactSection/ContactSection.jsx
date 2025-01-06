@@ -65,7 +65,7 @@ United Arab Emirates
         <div>
           <label className="block text-sm font-medium mb-1" htmlFor="phone">Phone *</label>
           <PhoneInput
-            country="bh" // Default country set to Bahrain
+            country="ae" // Default country set to Bahrain
             placeholder="Enter your phone number"
             inputStyle={{ width: '100%', height: '40px', border: '1px solid #D1D5DB', color: '#4B5563' }}
             containerClass="border border-gray-300 rounded-md"

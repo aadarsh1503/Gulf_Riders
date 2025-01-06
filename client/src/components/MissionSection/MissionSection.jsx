@@ -4,8 +4,8 @@ import i1 from "./i1.avif";
 const MissionSection = () => {
   return (
     <section id="about" className="py-16 px-6">
-      
-      <div><h1 className="text-white text-5xl"> hii</h1>
+      <h1 className="text-white text-5xl"> hii</h1>
+      <div>
         <h3 className="text-red-500 text-lg text-center font-semibold mb-2">
           Our Mission
         </h3>
@@ -15,7 +15,7 @@ const MissionSection = () => {
       </div>
 
       {/* First Section */}
-      <div className="max-w-7xl -ml-8 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl ml-0 lg:-ml-8 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Side - Image */}
         <div className="flex justify-center">
           <img
@@ -43,11 +43,11 @@ const MissionSection = () => {
       </div>
 
       {/* Second Section */}
-      <div className="max-w-7xl -mt-20 mx-auto grid grid-cols-1 md:grid-cols-2 ml-32 gap-1 items-center ">
+      <div className="max-w-7xl mt-4  lg:-mt-20 mx-auto grid grid-cols-1 md:grid-cols-2 ml-0 lg:ml-32 gap-1 items-center ">
         {/* Left Side - Text */}
         <div>
           <h4 className="text-xl font-semibold text-gray-800 mb-4">
-            Design Quality
+            Documentation
           </h4>
           <p className="text-gray-600 mb-2">
             No ipsum rebum est invidunt eos dolore. Sed sea ipsum vero invidunt
@@ -71,7 +71,7 @@ const MissionSection = () => {
       </div>
 
             {/* third Section */}
-            <div className="max-w-7xl -mt-10 -ml-8 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="max-w-7xl mt-0 lg:-mt-10 ml-0 lg:-ml-8 mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Left Side - Image */}
         <div className="flex justify-center">
           <img
@@ -83,7 +83,7 @@ const MissionSection = () => {
 
         {/* Right Side - Text */}
         <div>
-          <h4 className="text-xl font-semibold -mt-10 text-gray-800 mb-4">
+          <h4 className="text-xl font-semibold mt-0 lg:-mt-10 text-gray-800 mb-4">
           Customization
           </h4>
           <p className="text-gray-600 mb-2">
@@ -99,7 +99,7 @@ const MissionSection = () => {
       </div>
 
        {/* fourth Section */}
-       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 ml-32 gap-1 items-center ">
+       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 mt-6 ml-0 lg:ml-32 gap-1 items-center ">
         {/* Left Side - Text */}
         <div>
           <h4 className="text-xl font-semibold text-gray-800 mb-4">

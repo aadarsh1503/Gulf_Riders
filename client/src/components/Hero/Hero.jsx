@@ -12,7 +12,7 @@ import Testimonials from "../Testimonials/Testimonials";
 
 const Hero = () => {
   return (
-    <>
+    <div>
     <section id="home" className="relative font-poppins bg-dblue text-black py-24 overflow-hidden">
       {/* Curved Background */}
       <div
@@ -63,15 +63,17 @@ const Hero = () => {
       </div>
     </section>
     <FeaturesSection />
-    <MissionSection />
     <AnimatedStats />
+    <MissionSection />
+    
+   
     <FAQSection />
   <Slide />
  <CollapsibleSection />
  <Testimonials />
  <PricingSection />
  <ContactSection />
-    </>
+    </div>
   );
 };
 

@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import Footer from './components/Footer/Footer';
+import Slide from './components/Slide/Slide';
 
 
 
@@ -12,12 +13,10 @@ function App() {
       <Navbar />
       
       {/* Define routes */}
-      <Routes>
-        <Route path="/" element={<Hero />} />
-      
-        {/* Add more routes as needed */}
-        
-      </Routes>
+     
+        <Hero />
+       
+    
       <Footer />
     </div>
   );
