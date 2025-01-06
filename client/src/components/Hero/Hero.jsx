@@ -7,11 +7,13 @@ import Slide from "../Slide/Slide";
 import CollapsibleSection from "../collapsibleItems/collapsibleItems";
 import PricingSection from "../PricingSection/PricingSection";
 import ContactSection from "../ContactSection/ContactSection";
+import AnimatedStats from "../AnimatedStats/AnimatedStats";
+import Testimonials from "../Testimonials/Testimonials";
 
 const Hero = () => {
   return (
     <>
-    <section className="relative font-poppins bg-dblue text-black py-24 overflow-hidden">
+    <section id="home" className="relative font-poppins bg-dblue text-black py-24 overflow-hidden">
       {/* Curved Background */}
       <div
   className="absolute bottom-0 left-0 w-full h-32 bg-white z-0"
@@ -62,13 +64,16 @@ const Hero = () => {
     </section>
     <FeaturesSection />
     <MissionSection />
+    <AnimatedStats />
     <FAQSection />
   <Slide />
  <CollapsibleSection />
-
-
+ <Testimonials />
+ <PricingSection />
+ <ContactSection />
     </>
   );
 };
 
 export default Hero;
+ 

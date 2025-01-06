@@ -3,8 +3,9 @@ import i1 from "./i1.avif";
 
 const MissionSection = () => {
   return (
-    <section className="py-16 px-6">
-      <div>
+    <section id="about" className="py-16 px-6">
+      
+      <div><h1 className="text-white text-5xl"> hii</h1>
         <h3 className="text-red-500 text-lg text-center font-semibold mb-2">
           Our Mission
         </h3>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
@@ -85,7 +86,7 @@ const Slide = () => {
     };
 
     return (
-        <div className='bg-dblue mb-20 font-poppins py-24'>
+        <div className='bg-gradient-to-r from-purple-500  to-indigo-500 mb-20 font-poppins py-24'>
             <h1 className='text-center text-white mb-10 text-xl'>Features</h1>
             <h2 className='text-center text-white  text-3xl'> Features Used in RiderCRM Admin Template</h2>
             <section className="py-10 lg:max-w-7xl ml-20 lg:w-full w-[200px] mx-auto">
@@ -95,7 +96,7 @@ const Slide = () => {
                             {images.map((src, index) => (
                                 <div key={index} className="slide-item">
                                     <a href={imageLinks[index]} target="_blank" rel="noopener noreferrer" className="image-link">
-                                        <div className="flex justify-center mt-8 items-center bg-[#6e65cc] rounded-full p-2 w-20 h-20"> {/* Perfect circle size */}
+                                        <div className="flex justify-center mt-8 items-center bg-[#722cdb] rounded-full p-2 w-20 h-20"> {/* Perfect circle size */}
                                             <img
                                                 src={src}
                                                 alt={`Slide ${index + 1}`}

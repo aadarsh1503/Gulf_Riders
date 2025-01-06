@@ -5,7 +5,8 @@ import 'react-phone-input-2/lib/style.css';
 
 const ContactSection = () => {
   return (
-    <div className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id='contact' className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-white text-5xl"> hii</h1>
       <h2 className="text-3xl font-semibold text-center">
         Get in Touch with <span className="text-red-500">US</span>.
       </h2>
@@ -15,7 +16,10 @@ const ContactSection = () => {
             <FaMapMarkerAlt className="text-red-500 text-3xl" />
           </div>
           <h3 className="text-lg font-semibold mt-2">Main Branch</h3>
-          <p className="text-sm">150 Burno Street<br />San Francisco, CA</p>
+          <p className="text-sm ">221 Salah Al Din St -
+Deira - Dubai -<br />
+United Arab Emirates
+</p>
         </div>
         <div className="flex flex-col items-center text-center">
           <div className="bg-pink-100 p-4 rounded-full">
@@ -36,7 +40,7 @@ const ContactSection = () => {
             <FaClock className="text-blue-500 text-3xl" />
           </div>
           <h3 className="text-lg font-semibold mt-2">Working Hours</h3>
-          <p className="text-sm">Monday - Friday: 9am - 6pm<br />Saturday - Sunday: Holiday</p>
+          <p className="text-sm">Saturday - Thursday: 9am - 6pm<br />Friday: Holiday</p>
         </div>
       </div>
       <form className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">

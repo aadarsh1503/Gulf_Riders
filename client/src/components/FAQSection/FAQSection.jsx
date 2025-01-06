@@ -40,7 +40,8 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 px-6">
+    <section id="Faq" className="py-16 px-6">
+      <h1 className="text-5xl text-white">hii</h1>
          <h3 className="text-red-500 text-lg text-center font-semibold mb-2">
       FAQ'S ?
     </h3>

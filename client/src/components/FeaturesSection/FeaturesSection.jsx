@@ -60,7 +60,8 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section className="py-12 bg-white">
+    <section id='feature' className="py-12 bg-white">
+      <h1 className='text-white text-5xl'>hii</h1>
       <div className="text-center mb-8">
         <h3 className="text-red-500 text-lg font-semibold">Features</h3>
         <h2 className="text-3xl font-bold">RiderCRM Main Features</h2>

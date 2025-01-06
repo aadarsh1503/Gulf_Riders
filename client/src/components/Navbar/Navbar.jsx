@@ -12,9 +12,14 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+  
+    // Initial check for scroll position
+    handleScroll();
+  
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -35,7 +40,7 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-red-500 text-white" : "bg-lorange text-white"
+          isScrolled ? "bg-[#d83424] text-white" : "bg-lorange text-white"
         }`}
       >
         <div className="container mx-auto flex items-center text-sm justify-between px-6 py-2">
@@ -51,29 +56,47 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Menu Items */}
-          <div className="hidden md:flex mt-2 font-semibold items-center space-x-7 text-sm tracking-wide">
-            <Link to="/#about" onClick={() => scrollToSection("about")} className="hover:text-gray-600">
-              Home
-            </Link>
-            <Link to="/#glance" onClick={() => scrollToSection("glance")} className="hover:text-gray-600">
-              Feature
-            </Link>
-            <Link to="/#advantages" onClick={() => scrollToSection("advantages")} className="hover:text-gray-600">
-              About
-            </Link>
-            <Link to="/#steps" onClick={() => scrollToSection("steps")} className="hover:text-gray-600">
-              Highlights
-            </Link>
-            <Link to="/#story" onClick={() => scrollToSection("story")} className="hover:text-gray-600">
-              Faq's
-            </Link>
-            <Link to="/#markets" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
-              Clients
-            </Link>
-            <Link to="/#markets" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
-              Contacts
-            </Link>
-          </div>
+          <div className="hidden md:flex mt-2 ml-9 font-semibold items-center space-x-7 text-sm tracking-wide">
+  {/* Existing Links */}
+  <Link to="/#home" onClick={() => scrollToSection("Hero")} className="hover:text-gray-600">
+    Home
+  </Link>
+  <Link to="/#feature" onClick={() => scrollToSection("feature")} className="hover:text-gray-600">
+    Feature
+  </Link>
+  <Link to="/#about" onClick={() => scrollToSection("advantages")} className="hover:text-gray-600">
+    About
+  </Link>
+  <Link to="/#highlight" onClick={() => scrollToSection("steps")} className="hover:text-gray-600">
+    Highlights
+  </Link>
+  <Link to="/#Faq" onClick={() => scrollToSection("story")} className="hover:text-gray-600">
+    Faq's
+  </Link>
+  <Link to="/#testimonials" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
+    Clients
+  </Link>
+  <Link to="/#contact" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
+    Contacts
+  </Link>
+</div>
+
+{/* Buttons Section */}
+<div className="hidden md:flex items-center space-x-4">
+  <button
+    className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
+    onClick={() => console.log("Action 1")}
+  >
+    Apply For Registration
+  </button>
+  <button
+    className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300"
+    onClick={() => console.log("Action 2")}
+  >
+    Login
+  </button>
+</div>
+
 
           {/* Hamburger Menu Icon for Mobile */}
           <div className="md:hidden">

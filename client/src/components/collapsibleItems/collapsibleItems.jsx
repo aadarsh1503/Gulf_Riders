@@ -56,8 +56,9 @@ const CollapsibleSection = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
-        <h1 className='text-center font-bold mb-4 text-xl'>Highlight</h1>
+    <div id='highlight' className="max-w-4xl mx-auto p-6">
+        <h1 className="text-white mt-8 text-5xl"> hii</h1>
+        <h1 className='text-center font-bold mb-4 text-xl'>Highlights</h1>
       <h2 className="text-2xl text-center font-semibold mb-4">Template Highlights</h2>
       <p className="mb-6 text-xs font-semibold max-w-3xl mx-auto">
         The RiderCRMadmin template is one of the modern dashboard templates. It
