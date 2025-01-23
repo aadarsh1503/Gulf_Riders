@@ -9,6 +9,7 @@ import PricingSection from "../PricingSection/PricingSection";
 import ContactSection from "../ContactSection/ContactSection";
 import AnimatedStats from "../AnimatedStats/AnimatedStats";
 import Testimonials from "../Testimonials/Testimonials";
+import Slide1 from "../Slide1/Slide1";
 
 const Hero = () => {
   return (
@@ -62,10 +63,11 @@ const Hero = () => {
 
       </div>
     </section>
+    <Slide1 />
     <FeaturesSection />
     <AnimatedStats />
     <MissionSection />
-    
+   
    
     <FAQSection />
   <Slide />
