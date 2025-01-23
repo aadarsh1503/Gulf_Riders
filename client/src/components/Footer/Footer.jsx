@@ -3,7 +3,7 @@ import { FaFacebookF, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className="bg-dblue text-white py-8">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
         {/* Left Section */}
         <div className="text-center md:text-left">
@@ -48,7 +48,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="border-t border-gray-800 mt-6 pt-4">
         <p className="text-center text-gray-500">
-          Copyright © 2025 <span className="text-red-500">RiderCRM</span>
+          Copyright © 2025 <span className="text-white">RiderCRM</span>
         </p>
       </div>
     </footer>

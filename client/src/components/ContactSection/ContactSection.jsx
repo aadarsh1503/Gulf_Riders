@@ -8,12 +8,12 @@ const ContactSection = () => {
     <div id='contact' className="py-12 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-white text-5xl"> hii</h1>
       <h2 className="text-3xl font-semibold text-center">
-        Get in Touch with <span className="text-red-500">US</span>.
+        Get in Touch with <span className="text-dblue">US</span>.
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
         <div className="flex flex-col items-center text-center">
-          <div className="bg-red-100 p-4 rounded-full">
-            <FaMapMarkerAlt className="text-red-500 text-3xl" />
+          <div className="bg-dblue p-4 rounded-full">
+            <FaMapMarkerAlt className="text-white text-3xl" />
           </div>
           <h3 className="text-lg font-semibold mt-2">Main Branch</h3>
           <p className="text-sm ">221 Salah Al Din St -
@@ -22,22 +22,22 @@ United Arab Emirates
 </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <div className="bg-pink-100 p-4 rounded-full">
-            <FaPhoneAlt className="text-pink-500 text-3xl" />
+          <div className="bg-dblue p-4 rounded-full">
+            <FaPhoneAlt className="text-white text-3xl" />
           </div>
           <h3 className="text-lg font-semibold mt-2">Phone</h3>
           <p className="text-sm">9909999999</p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <div className="bg-green-100 p-4 rounded-full">
-            <FaEnvelope className="text-green-500 text-3xl" />
+          <div className="bg-dblue p-4 rounded-full">
+            <FaEnvelope className="text-white text-3xl" />
           </div>
           <h3 className="text-lg font-semibold mt-2">Email</h3>
           <p className="text-sm">hello@gmail.com</p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <div className="bg-blue-100 p-4 rounded-full">
-            <FaClock className="text-blue-500 text-3xl" />
+          <div className="bg-dblue p-4 rounded-full">
+            <FaClock className="text-white text-3xl" />
           </div>
           <h3 className="text-lg font-semibold mt-2">Working Hours</h3>
           <p className="text-sm">Saturday - Thursday: 9am - 6pm<br />Friday: Holiday</p>
@@ -90,7 +90,7 @@ United Arab Emirates
           />
         </div>
         <div className="md:col-span-2">
-          <button type="submit" className="w-full bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-md">
+          <button type="submit" className="w-full bg-dblue hover:bg-white hover:outline-black outline hover:text-black text-white py-2 px-4 rounded-md">
             Send Message
           </button>
         </div>

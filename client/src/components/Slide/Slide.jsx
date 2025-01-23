@@ -73,21 +73,21 @@ const Slide = () => {
     };
 
     return (
-        <div className='bg-gradient-to-r  from-purple-500 to-indigo-500 mb-20 font-poppins py-24'>
+        <div className='bg-dblue mb-20 font-poppins py-24'>
             <h1 className='text-center text-white mb-10 text-xl'>Features</h1>
-            <h2 className='text-center text-white text-3xl'>Features Used in RiderCRM Admin Template</h2>
-            <section className="py-10 lg:max-w-6xl ml-32 lg:ml-44 lg:w-full w-[200px] mx-auto">
+            <h2 className='text-center text-white lg:p-0 p-4 text-3xl'>Features Used in RiderCRM Admin Template</h2>
+            <section className="py-10 lg:max-w-6xl ml-40 lg:ml-44 lg:w-full w-[200px] mx-auto">
                 <div className="">
                     {isLoaded ? (
                         <Slider ref={sliderRef} {...settings}>
                             {images.map((src, index) => (
                                 <div key={index} className="slide-item">
                                     <a href={imageLinks[index]} target="_blank" rel="noopener noreferrer" className="image-link">
-                                        <div className="flex justify-center mt-8  items-center bg-[#722cdb] rounded-full p-2 w-20 h-20"> {/* Perfect circle size */}
+                                        <div className="flex justify-center mt-8  items-center bg-dblue  rounded-full p-2 w-20 h-20"> {/* Perfect circle size */}
                                             <img
                                                 src={src}
                                                 alt={`Slide ${index + 1}`}
-                                                className="object-cover w-full h-full rounded-full" 
+                                                className="object-cover w-full h-full rounded-full"  
                                             />
                                         </div>
                                         <p className="text-center text-white mt-2">{names[index]}</p> {/* Name under the image */}

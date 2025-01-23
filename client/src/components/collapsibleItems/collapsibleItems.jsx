@@ -14,12 +14,12 @@ const collapsibleItems = [
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
         </p>
-        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
           Click here
         </button>
       </>
     ),
-    bgColor: 'border-red-500 text-red-500',
+    bgColor: 'border-dblue text-black',
   },
   {
     title: 'Switch Easily From Full Width to Boxed Layout',
@@ -31,12 +31,12 @@ const collapsibleItems = [
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
         </p>
-        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
           Click here
         </button>
       </>
     ),
-    bgColor: 'border-pink-500 text-pink-500',
+    bgColor: 'border-dblue text-black',
   },
   {
     title: 'Change Easily Side Menu Styles',
@@ -48,12 +48,12 @@ const collapsibleItems = [
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
         </p>
-        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
           Click here
         </button>
       </>
     ),
-    bgColor: 'border-orange-500 text-orange-500',
+    bgColor: 'border-dblue text-black',
   },
   {
     title: 'Switch Easily From Fixed to Scrollable Layout',
@@ -65,12 +65,12 @@ const collapsibleItems = [
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
         </p>
-        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
           Click here
         </button>
       </>
     ),
-    bgColor: 'border-pink-500 text-pink-500',
+    bgColor: 'border-dblue text-black',
   },
   {
     title: 'Switch Easily From LTR to RTL Version',
@@ -82,12 +82,12 @@ const collapsibleItems = [
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
         </p>
-        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
           Click here
         </button>
       </>
     ),
-    bgColor: 'border-green-500 text-green-500',
+    bgColor: 'border-dblue text-black',
   },
   {
     title: 'Switch Easily From One Color to Another Color style',
@@ -99,12 +99,12 @@ const collapsibleItems = [
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
         </p>
-        <button className="mt-3 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">
+        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
           Click here
         </button>
       </>
     ),
-    bgColor: 'border-blue-500 text-blue-500',
+    bgColor: 'border-dblue text-black',
   },
 ];
 

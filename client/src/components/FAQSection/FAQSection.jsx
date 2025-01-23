@@ -44,7 +44,7 @@ const FAQSection = () => {
     <div>
     <section id="Faq" className="py-16 px-6">
       <h1 className="text-5xl text-white">hii</h1>
-         <h3 className="text-red-500 text-lg text-center font-semibold mb-2">
+         <h3 className="text-dblue text-lg text-center font-semibold mb-2">
       FAQ'S ?
     </h3>
     <h2 className="text-3xl font-bold text-center mb-6">
@@ -72,20 +72,20 @@ const FAQSection = () => {
             >
               <button
                 className={`w-full text-left px-6 py-4 ${
-                  openFAQ === faq.id ? "bg-red-50" : "bg-white"
+                  openFAQ === faq.id ? "bg-dblue" : "bg-white"
                 } flex items-center justify-between`}
                 onClick={() => toggleFAQ(faq.id)}
               >
                 <span
                   className={`font-medium ${
-                    openFAQ === faq.id ? "text-red-500" : "text-gray-800"
+                    openFAQ === faq.id ? "text-white" : "text-gray-800"
                   }`}
                 >
                   {faq.id < 10 ? `0${faq.id}.` : `${faq.id}.`} {faq.question}
                 </span>
                 <span
                   className={`text-xl transition-transform ${
-                    openFAQ === faq.id ? "rotate-180" : ""
+                    openFAQ === faq.id ? "rotate-180 text-white" : ""
                   }`}
                 >
                   ⌄

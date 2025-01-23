@@ -10,11 +10,11 @@ const AnimatedStats = () => {
   ];
 
   return (
-    <div className="bg-gradient-to-r  font-poppins from-purple-500 to-indigo-500 p-8">
+    <div className="bg-dblue font-poppins  p-8">
       <div className="grid grid-cols-1 py-12 md:grid-cols-4 gap-8 text-white">
         {stats.map((stat, index) => (
           <div key={index} className="flex flex-col items-center justify-center space-y-2">
-            <div className="text-4xl bg-purple-700 p-4 rounded-lg shadow-md">
+            <div className="text-4xl bg-dblue outline outline-white p-4 rounded-lg shadow-md">
               {stat.icon}
             </div>
             <div className="text-3xl font-bold">

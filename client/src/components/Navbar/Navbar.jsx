@@ -5,21 +5,28 @@ import { Link, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const location = useLocation();
+  let lastScrollY = 0; // To track the last scroll position
 
-  // Handle scroll event to change navbar style
+  // Handle scroll event to show/hide navbar based on scroll direction
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        setIsNavbarVisible(false); // Hide navbar on scroll down
+      } else {
+        setIsNavbarVisible(true); // Show navbar on scroll up
+      }
+      lastScrollY = currentScrollY; // Update the last scroll position
+
+      // Change navbar style when scrolled
+      setIsScrolled(currentScrollY > 50);
     };
-  
-    // Initial check for scroll position
-    handleScroll();
-  
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-  
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -39,9 +46,9 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled ? "bg-[#d83424] text-white" : "bg-lorange text-white"
-        }`}
+        className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
+          isScrolled ? "bg-dblue text-white" : "bg-lorange text-white"
+        } ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"}`}
       >
         <div className="container mx-auto flex items-center text-sm justify-between px-6 py-2">
           {/* Logo Section */}
@@ -57,46 +64,44 @@ const Navbar = () => {
 
           {/* Desktop Menu Items */}
           <div className="hidden md:flex mt-2 ml-9 font-semibold items-center space-x-7 text-sm tracking-wide">
-  {/* Existing Links */}
-  <Link to="/#home" onClick={() => scrollToSection("Hero")} className="hover:text-gray-600">
-    Home
-  </Link>
-  <Link to="/#feature" onClick={() => scrollToSection("feature")} className="hover:text-gray-600">
-    Feature
-  </Link>
-  <Link to="/#about" onClick={() => scrollToSection("advantages")} className="hover:text-gray-600">
-    About
-  </Link>
-  <Link to="/#highlight" onClick={() => scrollToSection("steps")} className="hover:text-gray-600">
-    Highlights
-  </Link>
-  <Link to="/#Faq" onClick={() => scrollToSection("story")} className="hover:text-gray-600">
-    Faq's
-  </Link>
-  <Link to="/#testimonials" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
-    Clients
-  </Link>
-  <Link to="/#contact" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
-    Contacts
-  </Link>
-</div>
+            <Link to="/#home" onClick={() => scrollToSection("Hero")} className="hover:text-gray-600">
+              Home
+            </Link>
+            <Link to="/#feature" onClick={() => scrollToSection("feature")} className="hover:text-gray-600">
+              Feature
+            </Link>
+            <Link to="/#about" onClick={() => scrollToSection("advantages")} className="hover:text-gray-600">
+              About
+            </Link>
+            <Link to="/#highlight" onClick={() => scrollToSection("steps")} className="hover:text-gray-600">
+              Highlights
+            </Link>
+            <Link to="/#Faq" onClick={() => scrollToSection("story")} className="hover:text-gray-600">
+              Faq's
+            </Link>
+            <Link to="/#testimonials" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
+              Clients
+            </Link>
+            <Link to="/#contact" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
+              Contacts
+            </Link>
+          </div>
 
-{/* Buttons Section */}
-<div className="hidden md:flex items-center space-x-4">
-  <button
-    className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300"
-    onClick={() => console.log("Action 1")}
-  >
-    Apply For Registration
-  </button>
-  <button
-    className="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300"
-    onClick={() => console.log("Action 2")}
-  >
-    Login
-  </button>
-</div>
-
+          {/* Buttons Section */}
+          <div className="hidden md:flex items-center space-x-4">
+            <button
+              className="bg-dblue text-white py-2 px-4 rounded-lg hover:bg-white outline outline-white hover:text-black transition duration-300"
+              onClick={() => console.log("Action 1")}
+            >
+              Apply For Registration
+            </button>
+            <button
+              className="hover:bg-dblue hover:text-white py-2 px-4 rounded-lg bg-white outline hover:outline-white text-black transition duration-300"
+              onClick={() => console.log("Action 2")}
+            >
+              Login
+            </button>
+          </div>
 
           {/* Hamburger Menu Icon for Mobile */}
           <div className="md:hidden">
@@ -116,31 +121,56 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-lorange text-white py-4 px-6">
+          <div className="md:hidden bg-dblue text-white py-4 px-6">
             {/* Mobile Menu Items */}
-            <a href="/#about" className="block py-2 hover:text-gray-400">
-              About Us
+            <a
+              href="/"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Home
             </a>
-            <a href="/#glance" className="block py-2 hover:text-gray-400">
-              At a Glance
+            <a
+              href="/#feature"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Feature
             </a>
-            <a href="/#advantages" className="block py-2 hover:text-gray-400">
-              Advantages
+            <a
+              href="/#about"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
             </a>
-            <a href="/#steps" className="block py-2 hover:text-gray-400">
-              Steps
+            <a
+              href="/#highlight"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Highlights
             </a>
-            <a href="/#story" className="block py-2 hover:text-gray-400">
-              Our Story
+            <a
+              href="/#Faq"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Faq's
             </a>
-            <a href="/#contact" className="block py-2 hover:text-gray-400">
-              Contact Us
+            <a
+              href="/#testimonials"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Clients
             </a>
-            <a href="/requestEarly" className="block py-2 hover:text-gray-400">
-              Request For Early Access
-            </a>
-            <a href="/becomeMerchant" className="block py-2 hover:text-gray-400">
-              Become a Merchant
+            <a
+              href="/#contact"
+              className="block py-2 hover:text-gray-400"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contacts
             </a>
           </div>
         )}

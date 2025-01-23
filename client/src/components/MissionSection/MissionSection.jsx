@@ -6,7 +6,7 @@ const MissionSection = () => {
     <section id="about" className="py-16 px-6">
       <h1 className="text-white text-5xl"> hii</h1>
       <div>
-        <h3 className="text-red-500 text-lg text-center font-semibold mb-2">
+        <h3 className="text-dblue text-lg text-center font-semibold mb-2">
           Our Mission
         </h3>
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
