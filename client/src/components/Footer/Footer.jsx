@@ -1,6 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
-
+import i1 from "./i1.png"
 const Footer = () => {
   return (
     <footer className="bg-dblue text-white py-8">
@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Placeholder for Logo */}
           <div className="flex justify-center md:justify-start mb-4">
             {/* Replace with your logo */}
-            <div className="w-56 h-32 flex items-center justify-center">
+            <div className="w-32 h-32 flex items-center justify-center">
   <img
-    src="https://crm.ridercrm.tech/storage/app/public/logo/14845584951713853932.png" // Replace with your image path
+    src={i1} // Replace with your image path
     alt="Logo"
     className="w-full h-full  "
   />
@@ -21,20 +21,16 @@ const Footer = () => {
           </div>
           
           <p className="text-gray-400 mt-2 max-w-xl leading-relaxed">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-            quae ab illo inventore veritatis et quasi architecto beatae vitae
-            dicta sunt explicabo. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Exceptetur sint occaecat.
+          Achieve Excellence with RiderCRM: Simplify your workflow and create impactful dashboards effortlessly with our advanced template. Instead of starting from scratch with complex coding in Blade.php, SCSS, CSS, and JS, you can leverage this well-structured solution to craft stunning, user-friendly dashboards that impress your users and streamline your processes. Say goodbye to missteps and inefficiencies—our template empowers you to focus on what truly matters: delivering exceptional results.
+
+
           </p>
         </div>
 
         {/* Right Section */}
         <div className="text-center max-w-xs md:text-left">
           <p className="text-gray-400 max-w-xl mb-4">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Exceptetur sint occaecat.
+          Effort That Yields Reward: No one seeks complexity for its own sake, but there are times when tackling challenges leads to extraordinary outcomes. 
           </p>
           <div className="flex justify-center  md:justify-start  space-x-4 text-gray-400">
             <FaFacebookF className="cursor-pointer hover:text-white" />
