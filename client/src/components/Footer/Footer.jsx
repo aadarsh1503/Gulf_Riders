@@ -21,7 +21,7 @@ const Footer = () => {
           </div>
           
           <p className="text-gray-400 mt-2 max-w-xl leading-relaxed">
-          Achieve Excellence with RiderCRM: Simplify your workflow and create impactful dashboards effortlessly with our advanced template. Instead of starting from scratch with complex coding in Blade.php, SCSS, CSS, and JS, you can leverage this well-structured solution to craft stunning, user-friendly dashboards that impress your users and streamline your processes. Say goodbye to missteps and inefficiencies—our template empowers you to focus on what truly matters: delivering exceptional results.
+          Achieve Excellence with Gulf Riders: Simplify your workflow and create impactful dashboards effortlessly with our advanced template. Instead of starting from scratch with complex coding in Blade.php, SCSS, CSS, and JS, you can leverage this well-structured solution to craft stunning, user-friendly dashboards that impress your users and streamline your processes. Say goodbye to missteps and inefficiencies—our template empowers you to focus on what truly matters: delivering exceptional results.
 
 
           </p>
@@ -44,7 +44,7 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className="border-t border-gray-800 mt-6 pt-4">
         <p className="text-center text-gray-500">
-          Copyright © 2025 <span className="text-white">RiderCRM</span>
+          Copyright © 2025 <span className="text-white">Gulf Riders</span>
         </p>
       </div>
     </footer>

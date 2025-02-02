@@ -7,7 +7,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-          The RiderCRM – Bootstrap 5 Admin & Dashboard Template is available in
+          The Gulf Riders – Bootstrap 5 Admin & Dashboard Template is available in
           both vertical and horizontal menus. Both menus are managed by single
           assets. Where users can easily switch from vertical to horizontal menus.
         </p>
@@ -26,7 +26,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts “Full Width” and “Boxed” Layouts. So that user can switch their dashboard from one layout to another layout effortlessly.
+        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts “Full Width” and “Boxed” Layouts. So that user can switch their dashboard from one layout to another layout effortlessly.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -43,7 +43,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is also available in different types of Side Menu Styles. Where the users can change their Side Menu styles by using single assets.
+        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is also available in different types of Side Menu Styles. Where the users can change their Side Menu styles by using single assets.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -60,7 +60,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts "Fixed Layout" and "Scrollable Layout". Here users can switch their Template from one layout to another layout easily.
+        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts "Fixed Layout" and "Scrollable Layout". Here users can switch their Template from one layout to another layout easily.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -77,7 +77,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is available in LRT & RTL versions with single assets. Using those single assets, it’s very easy to switch from one version to another version.
+        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is available in LRT & RTL versions with single assets. Using those single assets, it’s very easy to switch from one version to another version.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -94,7 +94,7 @@ const collapsibleItems = [
     content: (
       <>
         <p>
-        The RiderCRM– Bootstrap 5 Admin & Dashboard Template is available in different types of color styles. Where the users can change their template completely with those color styles.
+        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is available in different types of color styles. Where the users can change their template completely with those color styles.
         </p>
         <p>
           <strong>Note:</strong> Please Refer full Documentation for more details.
@@ -121,7 +121,7 @@ const CollapsibleSection = () => {
         <h1 className='text-center font-bold mb-4 text-xl'>Highlights</h1>
       <h2 className="text-2xl text-center font-semibold mb-4">Template Highlights</h2>
       <p className="mb-6 text-xs font-semibold max-w-3xl mx-auto">
-        The RiderCRMadmin template is one of the modern dashboard templates. It
+        The Gulf Riders Admin  template is one of the modern dashboard templates. It
         is also a premium admin dashboard with high-end features, where users
         can easily customize or change their projects according to their choice.
         Please take a quick look at our template highlights.

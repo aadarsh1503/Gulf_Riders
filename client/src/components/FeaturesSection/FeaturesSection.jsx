@@ -5,14 +5,14 @@ const features = [
     icon: <FaCube />,
     bgColor: 'bg-white',
     title: 'Unique Design',
-    description: 'RiderCRM has a unique design that you cannot compare with any other templates. It has unique Design.',
+    description: 'Gulf Riders has a unique design that you cannot compare with any other templates. It has unique Design.',
   },
   {
     icon: <FaCode />,
     bgColor: 'bg-white',
     title: 'Quality & Clean Code',
     description:
-      'The RiderCRM admin code is maintained very cleanly and well-structured with proper comments.',
+      'The Gulf Riders admin code is maintained very cleanly and well-structured with proper comments.',
   },
   {
     icon: <FaCopy />,
@@ -64,9 +64,9 @@ const FeaturesSection = () => {
       <h1 className='text-white text-5xl'>hii</h1>
       <div className="text-center mb-8">
         <h3 className="text-dblue text-lg font-semibold">Features</h3>
-        <h2 className="text-3xl font-bold">RiderCRM Main Features</h2>
+        <h2 className="text-3xl font-bold">Gulf Riders Main Features</h2>
         <p className="text-gray-600 mt-2">
-          The RiderCRM admin template comes with ready-to-use features that are completely easy-to-use for any user, even for a beginner.
+          The Gulf Riders admin template comes with ready-to-use features that are completely easy-to-use for any user, even for a beginner.
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">

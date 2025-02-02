@@ -52,7 +52,7 @@ const FAQSection = () => {
     </h2>
     <div className="flex max-w-5xl mx-auto mb-8 justify-center">
       <p className="text-gray-600 text-center ">
-        The RiderCRMAdmin template is one of the modern dashboard templates.
+        The Gulf Riders Admin  template is one of the modern dashboard templates.
         It is a premium admin dashboard with high-end features, where users
         can easily customize or change their projects according to their
         choice.

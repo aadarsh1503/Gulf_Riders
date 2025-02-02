@@ -31,11 +31,11 @@ const Hero = () => {
         <div className="lg:w-1/2 text-center  ml-2 lg:text-left mt-14 px-6">
           <h4 className="text-lg text-white font-medium mb-2">Manage Your Business</h4>
           <h1 className="text-4xl text-white font-semibold mb-4 leading-tight">
-  We Help to Build Your Dream <br />Project with RiderCRM!
+  We Help to Build Your Dream <br />Project with Gulf Riders!
 </h1>
 
           <p className="text-base text-white mt-6 mb-6">
-            RiderCRM- Now you can use this admin template to design stunning
+            Gulf Riders- Now you can use this admin template to design stunning
             dashboards that will wow your target viewers or users to no end. To
             create a good and well-structured dashboard, you need to start from
             scratch with Blade.php, SCSS, CSS, and JS and with lots of coding,
