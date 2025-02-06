@@ -10,7 +10,7 @@ import ContactSection from "../ContactSection/ContactSection";
 import AnimatedStats from "../AnimatedStats/AnimatedStats";
 import Testimonials from "../Testimonials/Testimonials";
 import Slide1 from "../Slide1/Slide1";
-
+import i23 from "./i23.png"
 const Hero = () => {
   return (
     <div>
@@ -55,7 +55,7 @@ const Hero = () => {
         {/* Right Image */}
         <div className="lg:w-1/2 px-6 mt-10 lg:mt-6">
   <img
-    src="https://crm.ridercrm.tech/public/design/assets/landing/images/market3.png"
+    src={i23}
     alt="Illustration"
     className="w-full relative  top-20 -left-8 right-1"
   />
