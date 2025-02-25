@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Slide from "../Slide/Slide";
+import i1 from "./i1.png"
 
 const FAQSection = () => {
   // State to track which FAQ is open
@@ -101,9 +102,9 @@ const FAQSection = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center -mt-8 items-center">
           <img
-            src="https://crm.ridercrm.tech/public/design/assets/landing/images/frequently-asked-questions.png"
+            src={i1}
             alt="FAQ Illustration"
             className="max-w-full h-auto"
           />
