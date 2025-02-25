@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import "./Slide1.css";
+import "./Slide.css";
 import i2 from "./i2.png";
 import i4 from "./i4.png";
 import i5 from "./i5.png";
@@ -14,11 +14,10 @@ import i9 from "./i9.png";
 import i10 from "./i10.png";
 import i11 from "./i11.png";
 import i12 from "./i12.png";
-import i100 from "./i100.png"
 import i101 from "./i101.jpg"
+import i100 from "./i100.png";
 
-
-const Slide1 = () => {
+const Slide = () => {
     const images = [i1, i2, i4, i5, i6,i101 ,i7,i8,i9,i10,i11,i12,i100];
     const imageLinks = [
         "https://example.com/link1",
@@ -103,7 +102,7 @@ const Slide1 = () => {
     };
 
     return (
-        <section className="py-10 lg:max-w-7xl mb-1 lg:w-full w-[200px] mx-auto">
+        <section className="py-10 lg:max-w-7xl mb-10 lg:w-full w-[200px] mx-auto">
            
         <div className="">
             {isLoaded ? (
@@ -133,4 +132,4 @@ const Slide1 = () => {
     );
 };
 
-export default Slide1;
+export default Slide;
