@@ -63,7 +63,7 @@ const Hero = () => {
 
       </div>
     </section>
-    <Slide1 />
+
     <FeaturesSection />
     <AnimatedStats />
     <MissionSection />
