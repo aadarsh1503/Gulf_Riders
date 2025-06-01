@@ -43,9 +43,10 @@ const Footer = () => {
 
       {/* Bottom Section */}
       <div className="border-t border-gray-800 mt-6 pt-4">
-        <p className="text-center text-gray-500">
-          Copyright © 2025 <span className="text-white">Gulf Riders</span>
-        </p>
+      <p className="text-center text-gray-500">
+  Copyright © {new Date().getFullYear()} <span className="text-white">Gulf Riders</span>
+</p>
+
       </div>
     </footer>
   );
