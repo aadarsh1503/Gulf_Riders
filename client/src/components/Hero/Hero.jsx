@@ -69,7 +69,7 @@ const Hero = () => {
         <div className="container max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10">
           
           <div className="flex flex-col text-center mt-6 lg:text-left">
-            <h4 className="text-lg text-cyan-400 font-semibold tracking-wider uppercase mb-3">
+            <h4 className="text-lg mt-10 lg:mt-0 text-cyan-400 font-semibold tracking-wider uppercase mb-3">
               Manage Your Business
             </h4>
             
@@ -84,7 +84,7 @@ const Hero = () => {
             </div>
             
             {/* --- UPDATED: Glassmorphism Interactive Tabs --- */}
-            <div className="flex flex-col sm:flex-row gap-2 bg-slate-800/20 p-2 rounded-xl border border-white/10 backdrop-blur-md self-center lg:self-start">
+            <div className="flex flex-col sm:flex-row gap-2  bg-slate-800/20 p-2 rounded-xl border border-white/10 backdrop-blur-md self-center lg:self-start">
                 {tabData.map((tab, index) => (
                     <button
                         key={index}
@@ -106,7 +106,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="relative mt-8 lg:mt-0 flex items-center justify-center">
+          <div className="relative lg:mt-0 -mt-6 flex items-center justify-center">
             {/* Using the same slide animation for the image */}
             <div key={activeTab} className="relative w-full max-w-lg animate-slide-in">
               <img

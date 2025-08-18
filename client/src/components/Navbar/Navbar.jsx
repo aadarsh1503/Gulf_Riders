@@ -105,7 +105,8 @@ const Navbar = () => {
         </div>
       </motion.nav>
       
-      {/* Mobile Menu remains unchanged as it's already on a white background */}
+   
+      {/* --- Animated Mobile Menu --- */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <>
@@ -121,30 +122,45 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 z-50 h-full w-72 bg-white p-6 md:hidden"
+              className="fixed top-0 right-0 z-50 h-full w-80 max-w-[calc(100%-3rem)] bg-white p-6 md:hidden" // Adjusted width
             >
-              <div className="flex flex-col space-y-6">
-                <a href="/" className="self-start">
-                  <img src={i1} alt="Logo" className="h-12 w-auto" />
-                </a>
+              <div className="flex flex-col space-y-8"> {/* Increased spacing */}
+                
+                {/* --- NEW: Menu Header with Logo and Close Button --- */}
+                <div className="flex items-center justify-between">
+                  <a href="/" className="self-start">
+                    <img src={i1} alt="Logo" className="h-12 w-auto" />
+                  </a>
+                  <button 
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="p-2 rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                    aria-label="Close menu"
+                  >
+                    <X className="h-6 w-6" />
+                  </button>
+                </div>
+                
+                {/* --- Navigation Links --- */}
                 <nav className="flex flex-col space-y-4">
                   {navLinks.map((link) => (
                     <button
                       key={link.title}
                       onClick={() => scrollToSection(link.href)}
-                      className="text-left text-lg font-medium text-gray-800 hover:text-indigo-600"
+                      className="text-left text-lg font-medium text-gray-800 hover:text-indigo-600 transition-colors py-1"
                     >
                       {link.title}
                     </button>
                   ))}
                 </nav>
-                <div className="mt-6 border-t border-gray-200 pt-6">
-                  <button className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
-                    Login
-                  </button>
-                  <button className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
-                  Apply For Registration
-                  </button>
+
+                {/* --- Buttons --- */}
+                <div className="mt-6 border-t border-gray-200 pt-6 flex flex-col space-y-3">
+                   <button className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
+                     Apply For Registration
+                   </button>
+                   <button className="w-full rounded-md bg-gray-100 px-4 py-2.5 text-sm font-semibold text-gray-800 shadow-sm hover:bg-gray-200">
+                     Login
+                   </button>
                 </div>
               </div>
             </motion.div>
