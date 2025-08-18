@@ -1,155 +1,177 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import i69 from "./i69.jpg";
 import i2 from "./i2.jpg";
 import i3 from "./i3.avif";
 import i4 from "./i4.jpg";
 
+// --- CONFIGURATION ---
+const AUTOPLAY_INTERVAL = 3000; // 3 seconds
+
+const testimonials = [
+  // ... (your testimonials data remains the same)
+  {
+    id: 1,
+    name: "Jose Rizal",
+    text: "Transformative Dashboard Solutions Gulf Riders has revolutionized the way we manage our operations. Its intuitive design and robust features have allowed us to create stunning dashboards effortlessly.",
+    address: "Cebu City, Cebu",
+    image: i3,
+  },
+  {
+    id: 2,
+    name: "Rohan Verma",
+    text: "With Gulf Riders, we no longer need to start from scratch with complex coding. The pre-built templates and tools make it incredibly easy to design beautiful and functional dashboards, saving us time.",
+    address: "Bangalore, Karnataka",
+    image: i2,
+  },
+  {
+    id: 3,
+    name: "Abdul-Raouf",
+    text: "Gulf Riders provides everything we need for a well-structured dashboard, from SCSS to JS integration. Its seamless functionality and real-time insights have empowered us to make data-driven decisions.",
+    address: "Dubai Marina, Dubai",
+    image: i69,
+  },
+  {
+    id: 4,
+    name: "Ali Al-Fahim",
+    text: "Innovative and User-Friendly Gulf Riders has set a new benchmark for admin templates. The stunning designs and advanced features have enhanced our workflow significantly. It's a game-changer.",
+    address: "Al Rayyan, Qatar",
+    image: i4,
+  },
+];
+
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? '100%' : '-100%',
+    opacity: 0,
+  }),
+};
+
 const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Jose Rizal",
-      text: "Transformative Dashboard Solutions Gulf Riders has revolutionized the way we manage our operations. Its intuitive design and robust features have allowed us to create stunning dashboards effortlessly. The flexibility of customization and its user-friendly interface are simply unmatched.",
-      address: "Cebu City, Cebu",
-      image: i3,
-    },
-    {
-      id: 2,
-      name: "Rohan Verma",
-      text: "Effortless Customization and Scalability With Gulf Riders, we no longer need to start from scratch with complex coding. The pre-built templates and tools make it incredibly easy to design beautiful and functional dashboards, saving us valuable time and resources.",
-      address: "Bangalore, Karnataka",
-      image: i2,
-    },
-    {
-      id: 3,
-      name: "Abdul-Raouf",
-      text: "Streamlined Operations and Insights Gulf Riders provides everything we need for a well-structured dashboard, from SCSS to JS integration. Its seamless functionality and real-time insights have empowered us to make data-driven decisions with confidence.",
-      address: "Dubai Marina, Dubai",
-      image: i69,
-    },
-    {
-      id: 4,
-      name: "Ali Al-Fahim",
-      text: "Innovative and User-Friendly Gulf Riders has set a new benchmark for admin templates. The stunning designs and advanced features have enhanced our workflow significantly. It's a game-changer for any business looking to create impactful dashboards without hassle.",
-      address: "Al Rayyan, Qatar",
-      image: i4,
-    },
-  ];
-  
+  const [[current, direction], setCurrentSlide] = useState([0, 0]);
+  const [isPaused, setIsPaused] = useState(false); // NEW: State to control autoplay
 
-  const [current, setCurrent] = useState(0);
-  const [expandedIndex, setExpandedIndex] = useState(null); // Track expanded testimonial
-
-  const handleNext = () => {
-    setCurrent((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const paginate = (newDirection) => {
+    const nextIndex = (current + newDirection + testimonials.length) % testimonials.length;
+    setCurrentSlide([nextIndex, newDirection]);
   };
 
-  const handlePrev = () => {
-    setCurrent((prev) => (prev + 1) % testimonials.length);
-  };
+  const activeTestimonial = testimonials[current];
 
-  const reorderedTestimonials = [
-    testimonials[(current + 0) % testimonials.length],
-    testimonials[(current + 1) % testimonials.length],
-    testimonials[(current + 2) % testimonials.length],
-  ];
+  // --- NEW: useEffect for Autoplay ---
+  useEffect(() => {
+    // If paused, do nothing
+    if (isPaused) return;
 
-  const truncateText = (text, lines) => {
-    const maxChars = lines * 50; // Approximate character count for 3 lines
-    return text.length > maxChars ? text.substring(0, maxChars) + "..." : text;
-  };
+    // Set up the interval
+    const slideInterval = setInterval(() => {
+      paginate(1); // Go to the next slide
+    }, AUTOPLAY_INTERVAL);
+
+    // Clean up the interval when the component unmounts or when isPaused changes
+    return () => clearInterval(slideInterval);
+  }, [isPaused, current]); // Rerun effect if isPaused or current changes
 
   return (
-    <div id='testimonials' className=" space-y-8  mb-20">
-      <h1 className="text-white mb-10 text-7xl"> hii</h1>
-      <div className="lg:text-3xl mt-9 -mb-9 text-2xl lg:ml-44 ml-4 text-lightblue text-center font-bold max-w-5xl mx-auto ">
-        Our Testimonials
-      </div>
-
-      {/* Desktop View */}
-      <div className="hidden lg:flex justify-center items-center">
-        {/* Left Arrow */}
-        <button
-          onClick={handlePrev}
-          className="text-gray-600 hover:text-gray-800 p-4 bg-gray-200 rounded-full focus:outline-none mx-4"
-        >
-          &#8592;
-        </button>
-
-        <div className="flex items-center gap-12 mt-32">
-          {reorderedTestimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.id}
-              className={`relative transition-all duration-1000 ease-in-out flex flex-col items-center bg-white shadow-md p-6 rounded-lg
-                ${index === 1
-                  ? "scale-110 opacity-100 h-[456px] w-72 transform shadow-xl transition-transform"
-                  : "scale-90 opacity-60 w-72 transform transition-transform"}`}
-            >
-              <div
-                className={`absolute -top-10 flex justify-center items-center w-24 h-24 rounded-full overflow-hidden border-4 ${index === 1 ? "border-DarkBlue" : "border-gray-200"}`}
-              >
-                <img
-                  src={testimonial.image}
-                  alt={testimonial.name}
-                  className={`object-cover w-full h-full ${index === 1 ? "scale-110" : "scale-100"}`}
-                />
-              </div>
-              <div className="text-5xl text-DarkYellow mt-4 lg:mt-10 ml-0 lg:-ml-56">“</div>
-              <p className="text-DarkBlue font-bold mb-1">{testimonial.name}</p>
-              <p className="text-gray-600 max-w-7xl text-center">
-                {index === 1 ? testimonial.text : truncateText(testimonial.text, 3)}
-              </p>
-              <p className="text-gray-500 mt-2">{testimonial.address}</p>
-              <div className="text-5xl text-DarkYellow ml-0 lg:ml-56 mt-2">”</div>
-            </div>
-          ))}
+    <section id="testimonials" className="bg-slate-50 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        {/* --- Header --- */}
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-base font-semibold leading-7 text-indigo-600">Testimonials</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Loved by Teams Worldwide
+          </p>
         </div>
 
-        {/* Right Arrow */}
-        <button
-          onClick={handleNext}
-          className="text-gray-600 hover:text-gray-800 p-4 bg-gray-200 rounded-full focus:outline-none mx-4"
+        {/* --- Carousel Container with Pause/Resume events --- */}
+        <div
+          className="relative mt-16 flex h-[450px] items-center justify-center overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)} // NEW: Pause on hover
+          onMouseLeave={() => setIsPaused(false)} // NEW: Resume on leave
         >
-          &#8594;
-        </button>
-      </div>
-
-      {/* Mobile View */}
-      <div className="grid grid-cols-1 sm:grid-cols-1 gap-8 lg:hidden mt-10 px-4">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={testimonial.id}
-            className="flex flex-col items-center bg-white shadow-md p-6 rounded-lg"
+          {/* --- Navigation Arrows --- */}
+          <button
+            onClick={() => paginate(-1)}
+            className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/60 p-2 text-gray-700 shadow-md backdrop-blur-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 hidden md:flex"
           >
-            <div
-              className="w-24 h-24 rounded-full overflow-hidden border-4 border-gray-200 mb-4"
+            <ChevronLeft className="h-6 w-6" />
+          </button>
+          
+          <AnimatePresence initial={false} custom={direction}>
+            <motion.div
+              key={current}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: 'spring', stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 },
+              }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={1}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = Math.abs(offset.x) * velocity.x;
+                if (swipe < -10000) {
+                  paginate(1);
+                } else if (swipe > 10000) {
+                  paginate(-1);
+                }
+              }}
+              className="absolute flex h-full w-full max-w-2xl cursor-grab flex-col items-center justify-center px-8 active:cursor-grabbing"
             >
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="text-lightblue font-bold mb-1">{testimonial.name}</div>
-            <p className="text-gray-500 mt-2">{testimonial.address}</p>
-            
-            <p className="text-gray-600 max-w-7xl text-center">
-              {expandedIndex === index ? testimonial.text : truncateText(testimonial.text, 3)}
-            </p>
+              {/* --- Card Content --- */}
+              <div className="relative w-full rounded-2xl bg-white p-8 text-center shadow-xl">
+                <Quote className="absolute left-6 top-6 h-8 w-8 text-indigo-100" />
+                <img
+                  src={activeTestimonial.image}
+                  alt={activeTestimonial.name}
+                  className="mx-auto h-24 w-24 rounded-full object-cover ring-4 ring-white"
+                />
+                <p className="mt-6 text-lg leading-7 text-gray-700">"{activeTestimonial.text}"</p>
+                <div className="mt-6">
+                  <p className="font-bold text-gray-900">{activeTestimonial.name}</p>
+                  <p className="text-sm text-gray-500">{activeTestimonial.address}</p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
 
-            <div className="flex justify-center space-x-2 mt-4">
-              <button
-                className={`h-2 w-2 rounded-full ${expandedIndex === index ? 'bg-lightblue' : 'bg-gray-300'}`}
-                onClick={() => setExpandedIndex(expandedIndex === index ? null : index)} // Toggle expanded state
-              ></button>
-            </div>
-          </div>
-        ))}
+          <button
+            onClick={() => paginate(1)}
+            className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-white/60 p-2 text-gray-700 shadow-md backdrop-blur-sm transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 hidden md:flex"
+          >
+            <ChevronRight className="h-6 w-6" />
+          </button>
+        </div>
+
+        {/* --- Pagination Dots --- */}
+        <div className="mt-8 flex justify-center gap-3">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentSlide([index, index > current ? 1 : -1])}
+              className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                current === index ? 'w-4 bg-indigo-600' : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
-
-
-
-    </div>
+    </section>
   );
 };
 

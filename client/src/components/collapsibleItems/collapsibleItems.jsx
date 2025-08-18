@@ -1,155 +1,164 @@
 import React, { useState } from 'react';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ChevronDown,
+  Columns,
+  Box,
+  PanelLeft,
+  MoveVertical,
+  Languages,
+  Palette,
+  ArrowRight
+} from 'lucide-react';
 
+// --- Refactored Data with Icons ---
+// This makes the component more visual and easier to manage.
 const collapsibleItems = [
   {
-    title: 'Switch Easily From Vertical to Horizontal Menu',
-    content: (
-      <>
-        <p>
-          The Gulf Riders – Bootstrap 5 Admin & Dashboard Template is available in
-          both vertical and horizontal menus. Both menus are managed by single
-          assets. Where users can easily switch from vertical to horizontal menus.
-        </p>
-        <p>
-          <strong>Note:</strong> Please Refer full Documentation for more details.
-        </p>
-        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
-          Click here
-        </button>
-      </>
-    ),
-    bgColor: 'border-dblue text-black',
+    title: 'Vertical & Horizontal Menu',
+    Icon: Columns,
+    content: 'Our template includes both vertical and horizontal menu layouts, managed by a single asset set. Switch between them effortlessly to fit your project’s needs.',
+    link: '/documentation' // Example link
   },
   {
-    title: 'Switch Easily From Full Width to Boxed Layout',
-    content: (
-      <>
-        <p>
-        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts “Full Width” and “Boxed” Layouts. So that user can switch their dashboard from one layout to another layout effortlessly.
-        </p>
-        <p>
-          <strong>Note:</strong> Please Refer full Documentation for more details.
-        </p>
-        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
-          Click here
-        </button>
-      </>
-    ),
-    bgColor: 'border-dblue text-black',
+    title: 'Full Width & Boxed Layout',
+    Icon: Box,
+    content: 'Choose between a full-width or a modern boxed layout. This flexibility allows you to control the visual presentation of your dashboard with a simple configuration change.',
+    link: '/documentation'
   },
   {
-    title: 'Change Easily Side Menu Styles',
-    content: (
-      <>
-        <p>
-        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is also available in different types of Side Menu Styles. Where the users can change their Side Menu styles by using single assets.
-        </p>
-        <p>
-          <strong>Note:</strong> Please Refer full Documentation for more details.
-        </p>
-        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
-          Click here
-        </button>
-      </>
-    ),
-    bgColor: 'border-dblue text-black',
+    title: 'Customizable Side Menu Styles',
+    Icon: PanelLeft,
+    content: 'Multiple side menu styles are available out-of-the-box. Customize the navigation to match your desired user experience without writing complex CSS.',
+    link: '/documentation'
   },
   {
-    title: 'Switch Easily From Fixed to Scrollable Layout',
-    content: (
-      <>
-        <p>
-        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is also available in two different types of layouts "Fixed Layout" and "Scrollable Layout". Here users can switch their Template from one layout to another layout easily.
-        </p>
-        <p>
-          <strong>Note:</strong> Please Refer full Documentation for more details.
-        </p>
-        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
-          Click here
-        </button>
-      </>
-    ),
-    bgColor: 'border-dblue text-black',
+    title: 'Fixed & Scrollable Layouts',
+    Icon: MoveVertical,
+    content: 'Adapt the template’s scrolling behavior with options for both fixed and scrollable layouts, ensuring a perfect fit for content-heavy or static pages.',
+    link: '/documentation'
   },
   {
-    title: 'Switch Easily From LTR to RTL Version',
-    content: (
-      <>
-        <p>
-        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is available in LRT & RTL versions with single assets. Using those single assets, it’s very easy to switch from one version to another version.
-        </p>
-        <p>
-          <strong>Note:</strong> Please Refer full Documentation for more details.
-        </p>
-        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
-          Click here
-        </button>
-      </>
-    ),
-    bgColor: 'border-dblue text-black',
+    title: 'LTR & RTL Support',
+    Icon: Languages,
+    content: 'Full support for both Left-to-Right (LTR) and Right-to-Left (RTL) languages is included, making your application ready for a global audience.',
+    link: '/documentation'
   },
   {
-    title: 'Switch Easily From One Color to Another Color style',
-    content: (
-      <>
-        <p>
-        The Gulf Riders– Bootstrap 5 Admin & Dashboard Template is available in different types of color styles. Where the users can change their template completely with those color styles.
-        </p>
-        <p>
-          <strong>Note:</strong> Please Refer full Documentation for more details.
-        </p>
-        <button className="mt-3 px-4 py-2 bg-dblue text-white rounded hover:outline-dblue outline hover:bg-white hover:text-black">
-          Click here
-        </button>
-      </>
-    ),
-    bgColor: 'border-dblue text-black',
+    title: 'Multiple Color Styles',
+    Icon: Palette,
+    content: 'Easily switch between various pre-built color schemes or create your own. Our template is built with customization in mind to perfectly match your brand identity.',
+    link: '/documentation'
   },
 ];
 
+// --- Animation Variants for Framer Motion ---
+const sectionVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut", staggerChildren: 0.1 },
+  },
+};
+
+const contentVariants = {
+  hidden: { opacity: 0, height: 0 },
+  visible: {
+    opacity: 1,
+    height: 'auto',
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }, // A more playful ease
+  },
+  exit: {
+    opacity: 0,
+    height: 0,
+    transition: { duration: 0.3, ease: [0.33, 1, 0.68, 1] },
+  },
+};
+
 const CollapsibleSection = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0); // Default open the first item
 
   const toggleCollapse = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
-    <div id='highlight' className="max-w-4xl mx-auto p-6">
-        <h1 className="text-white mt-8 text-5xl"> hii</h1>
-        <h1 className='text-center font-bold mb-4 text-xl'>Highlights</h1>
-      <h2 className="text-2xl text-center font-semibold mb-4">Template Highlights</h2>
-      <p className="mb-6 text-xs font-semibold max-w-3xl mx-auto">
-        The Gulf Riders Admin  template is one of the modern dashboard templates. It
-        is also a premium admin dashboard with high-end features, where users
-        can easily customize or change their projects according to their choice.
-        Please take a quick look at our template highlights.
-      </p>
-      <div className="space-y-4">
-        {collapsibleItems.map((item, index) => (
-          <div
-            key={index}
-            className={`p-4 border rounded-lg ${item.bgColor} relative`}
-          >
-            <button
-              className="flex justify-between items-center w-full font-semibold"
-              onClick={() => toggleCollapse(index)}
-            >
-              {item.title}
-              {activeIndex === index ? (
-                <AiOutlineMinus className="text-lg" />
-              ) : (
-                <AiOutlinePlus className="text-lg" />
-              )}
-            </button>
-            {activeIndex === index && (
-              <div className="mt-3 text-gray-700">{item.content}</div>
-            )}
-          </div>
-        ))}
+    <motion.div
+      id="highlight"
+      className="bg-slate-50 py-24 sm:py-32"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={sectionVariants}
+    >
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
+        {/* --- Header --- */}
+        <div className="text-center">
+          <h2 className="text-base font-semibold leading-7 text-indigo-600">Features</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Template Highlights
+          </p>
+          <p className="mt-6 max-w-2xl mx-auto text-lg leading-8 text-gray-600">
+            Our admin template is packed with high-end features designed for flexibility and ease of use. Explore some of the key highlights below.
+          </p>
+        </div>
+
+        {/* --- Collapsible List --- */}
+        <div className="mt-16 max-w-3xl mx-auto space-y-4">
+          {collapsibleItems.map((item, index) => {
+            const isOpen = activeIndex === index;
+            return (
+              <motion.div
+                key={item.title}
+                className="rounded-xl bg-white shadow-sm overflow-hidden border border-transparent has-[:focus-visible]:border-indigo-400"
+                variants={sectionVariants} // Staggered reveal for each item
+              >
+                <button
+                  className="flex justify-between items-center w-full p-6 text-left"
+                  onClick={() => toggleCollapse(index)}
+                >
+                  <span className="flex items-center gap-4">
+                    <item.Icon className={`h-6 w-6 transition-colors ${isOpen ? 'text-indigo-600' : 'text-gray-500'}`} />
+                    <span className={`font-semibold text-lg ${isOpen ? 'text-indigo-600' : 'text-gray-900'}`}>
+                      {item.title}
+                    </span>
+                  </span>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  >
+                    <ChevronDown className={`h-5 w-5 transition-colors ${isOpen ? 'text-indigo-600' : 'text-gray-400'}`} />
+                  </motion.div>
+                </button>
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      className="px-6 overflow-hidden"
+                      variants={contentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      <div className="pb-6 border-t border-slate-200 pt-4">
+                        <p className="text-gray-600">{item.content}</p>
+                        <a
+                          href={item.link}
+                          className="mt-4 inline-flex items-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          Learn More
+                          <ArrowRight className="h-4 w-4" />
+                        </a>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

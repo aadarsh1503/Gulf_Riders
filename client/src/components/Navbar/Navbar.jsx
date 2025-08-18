@@ -1,180 +1,156 @@
-import React, { useState, useEffect } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
-import i1 from "./i1.png"
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import i1 from "./i1.png";
+
+// --- Data for Navigation Links ---
+const navLinks = [
+  { title: "Home", href: "#Hero" },
+  { title: "Feature", href: "#feature" },
+  { title: "About", href: "#about" },
+  { title: "Highlights", href: "#highlight" },
+  { title: "FAQ", href: "#Faq" },
+  { title: "Clients", href: "#testimonials" },
+  { title: "Contact", href: "#contact" },
+];
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
-  const location = useLocation();
-  let lastScrollY = 0; // To track the last scroll position
+  const lastScrollY = useRef(0);
 
-  // Handle scroll event to show/hide navbar based on scroll direction
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsNavbarVisible(false); // Hide navbar on scroll down
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsNavbarVisible(false);
       } else {
-        setIsNavbarVisible(true); // Show navbar on scroll up
+        setIsNavbarVisible(true);
       }
-      lastScrollY = currentScrollY; // Update the last scroll position
-
-      // Change navbar style when scrolled
+      lastScrollY.current = currentScrollY;
       setIsScrolled(currentScrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
-
-  // Smooth scrolling function
   const scrollToSection = (sectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    const id = sectionId.replace("#", "");
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMobileMenuOpen(false);
   };
-
-  // Detect route change and trigger scroll
-  useEffect(() => {
-    const sectionId = location.hash.replace("#", "");
-    if (sectionId) {
-      scrollToSection(sectionId);
-    }
-  }, [location]);
 
   return (
     <>
-      <nav
-        className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
-          isScrolled ? "bg-dblue text-white" : "bg-lorange text-white"
-        } ${isNavbarVisible ? "translate-y-0" : "-translate-y-full"}`}
+      <motion.nav
+        className={`fixed top-0 w-full z-50 transition-colors duration-300 ${
+          isScrolled
+            ? "bg-gray-900/80 text-white shadow-md backdrop-blur-lg" // <-- CHANGE: Swapped white for dark background
+            : "bg-transparent text-white"
+        }`}
+        animate={{ y: isNavbarVisible ? 0 : -100 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="container mx-auto flex items-center text-sm justify-between px-6 py-">
-          {/* Logo Section */}
-          <div className="flex items-center space-x-4">
-            <a href="/">
-              <img
-                src={i1}
-                alt="Logo"
-                className="h-24 w-24"
-              />
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex h-20 items-center justify-between">
+            <a href="/" className="flex-shrink-0">
+              <img src={i1} alt="Logo" className="h-20 w-auto" />
             </a>
-          </div>
 
-          {/* Desktop Menu Items */}
-          <div className="hidden md:flex mt-2 ml-9 font-semibold items-center space-x-7 text-sm tracking-wide">
-            <Link to="/#home" onClick={() => scrollToSection("Hero")} className="hover:text-gray-600">
-              Home
-            </Link>
-            <Link to="/#feature" onClick={() => scrollToSection("feature")} className="hover:text-gray-600">
-              Feature
-            </Link>
-            <Link to="/#about" onClick={() => scrollToSection("advantages")} className="hover:text-gray-600">
-              About
-            </Link>
-            <Link to="/#highlight" onClick={() => scrollToSection("steps")} className="hover:text-gray-600">
-              Highlights
-            </Link>
-            <Link to="/#Faq" onClick={() => scrollToSection("story")} className="hover:text-gray-600">
-              Faq's
-            </Link>
-            <Link to="/#testimonials" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
-              Clients
-            </Link>
-            <Link to="/#contact" onClick={() => scrollToSection("markets")} className="hover:text-gray-600">
-              Contacts
-            </Link>
-          </div>
+            <div className="hidden md:flex items-center space-x-6 text-sm font-medium">
+              {navLinks.map((link) => (
+                <button
+                  key={link.title}
+                  onClick={() => scrollToSection(link.href)}
+                  // <-- CHANGE: Link color now becomes a soft white on scroll
+                  className={`transition-colors hover:text-indigo-500 ${isScrolled ? 'text-gray-200' : 'text-white'}`}
+                >
+                  {link.title}
+                </button>
+              ))}
+            </div>
 
-          {/* Buttons Section */}
-          <div className="hidden md:flex items-center space-x-4">
-            <button
-              className="bg-dblue text-white py-2 px-4 rounded-lg hover:bg-white outline outline-white hover:text-black transition duration-300"
-              onClick={() => console.log("Action 1")}
-            >
+            <div className="hidden md:flex items-center space-x-4">
+              <button className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                Login
+              </button>
+              <button className="rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
               Apply For Registration
-            </button>
-            <button
-              className="hover:bg-dblue hover:text-white py-2 px-4 rounded-lg bg-white outline hover:outline-white text-black transition duration-300"
-              onClick={() => console.log("Action 2")}
-            >
-              Login
-            </button>
-          </div>
+              </button>
+            </div>
 
-          {/* Hamburger Menu Icon for Mobile */}
-          <div className="md:hidden">
-            {isMobileMenuOpen ? (
-              <FaTimes
-                className="text-2xl cursor-pointer text-white"
-                onClick={toggleMobileMenu}
-              />
-            ) : (
-              <FaBars
-                className="text-2xl cursor-pointer text-white"
-                onClick={toggleMobileMenu}
-              />
-            )}
+            <div className="md:hidden">
+              <motion.button
+                aria-label="Toggle mobile menu"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                // <-- CHANGE: Hamburger icon is now always white
+                className={`p-2 rounded-md text-white`}
+              >
+                <AnimatePresence mode="wait">
+                  {isMobileMenuOpen ? (
+                    <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }}>
+                      <X className="h-6 w-6" />
+                    </motion.div>
+                  ) : (
+                    <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }}>
+                      <Menu className="h-6 w-6" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
+            </div>
           </div>
         </div>
-
-        {/* Mobile Menu */}
+      </motion.nav>
+      
+      {/* Mobile Menu remains unchanged as it's already on a white background */}
+      <AnimatePresence>
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-dblue text-white py-4 px-6">
-            {/* Mobile Menu Items */}
-            <a
-              href="/"
-              className="block py-2 hover:text-gray-400"
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               onClick={() => setIsMobileMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/50 md:hidden"
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 z-50 h-full w-72 bg-white p-6 md:hidden"
             >
-              Home
-            </a>
-            <a
-              href="/#feature"
-              className="block py-2 hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Feature
-            </a>
-            <a
-              href="/#about"
-              className="block py-2 hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="/#highlight"
-              className="block py-2 hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Highlights
-            </a>
-            <a
-              href="/#Faq"
-              className="block py-2 hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Faq's
-            </a>
-            <a
-              href="/#testimonials"
-              className="block py-2 hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Clients
-            </a>
-            <a
-              href="/#contact"
-              className="block py-2 hover:text-gray-400"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Contacts
-            </a>
-          </div>
+              <div className="flex flex-col space-y-6">
+                <a href="/" className="self-start">
+                  <img src={i1} alt="Logo" className="h-12 w-auto" />
+                </a>
+                <nav className="flex flex-col space-y-4">
+                  {navLinks.map((link) => (
+                    <button
+                      key={link.title}
+                      onClick={() => scrollToSection(link.href)}
+                      className="text-left text-lg font-medium text-gray-800 hover:text-indigo-600"
+                    >
+                      {link.title}
+                    </button>
+                  ))}
+                </nav>
+                <div className="mt-6 border-t border-gray-200 pt-6">
+                  <button className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
+                    Login
+                  </button>
+                  <button className="w-full rounded-md bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
+                  Apply For Registration
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
-      </nav>
+      </AnimatePresence>
     </>
   );
 };
