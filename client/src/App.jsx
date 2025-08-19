@@ -11,10 +11,9 @@ function App() {
   useLenis()
   return (
     <div>
-      {/* Navbar is common across all routes */}
-      <Navbar />
       
-      {/* Define routes */}
+      <Navbar />
+
      
         <Hero />
        
