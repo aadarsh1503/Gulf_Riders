@@ -6,7 +6,7 @@ import i1 from "./i1.png";
 // --- Data for Navigation Links ---
 const navLinks = [
   { title: "Home", href: "#Hero" },
-  { title: "Feature", href: "#feature" },
+  { title: "Features", href: "#feature" },
   { title: "About", href: "#about" },
   { title: "Highlights", href: "#highlight" },
   { title: "FAQ", href: "#Faq" },
