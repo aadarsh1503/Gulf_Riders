@@ -21,7 +21,7 @@ const contactDetails = [
   {
     Icon: Mail,
     title: 'Email',
-    value: 'hello@gulf-riders.com',
+    value: 'info@gulfriders.net',
   },
   {
     Icon: Clock,
@@ -100,7 +100,7 @@ const ContactSection = () => {
 
     // 2. Create the payload with the simple structure the API expects.
     const payload = {
-      to: 'aadarshchauhan35@gmail.com',
+      to: 'info@gulfriders.net',
       subject: formData.subject, // The subject is still sent separately.
       message: formattedMessage, // The merged details are sent as the main message.
     };

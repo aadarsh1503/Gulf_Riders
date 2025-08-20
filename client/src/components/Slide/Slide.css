@@ -1,46 +1,160 @@
-.image-container {
-  position: relative;
-  overflow: hidden; /* Prevents image overflow during animation */
+/* ==========================================================================
+   Main Showcase Container Styling
+   ========================================================================== */
+
+   #tech-showcase {
+    /* Create a deep, futuristic background with a subtle radial gradient */
+    background-color: #0a192f; /* Your bg-dblue color */
+    background-image: radial-gradient(ellipse at 50% -20%, 
+        rgba(10, 88, 134, 0.4), 
+        rgba(10, 25, 47, 0)
+    );
+    border-top: 1px solid rgba(0, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 255, 255, 0.1);
 }
 
-.fade-out {
-  animation: fadeOut 1s forwards;
+/* Optional: Add a subtle animated grid pattern to the background for a high-tech feel */
+#tech-showcase::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 4rem 4rem;
+    opacity: 0.5;
+    animation: pan-grid 60s linear infinite;
 }
 
-@keyframes fadeOut {
-  0% {
-    transform: translateX(0);
+@keyframes pan-grid {
+    0% { background-position: 0 0; }
+    100% { background-position: 4rem 4rem; }
+}
+
+
+/* ==========================================================================
+   Tech Card Styling - The individual items
+   ========================================================================== */
+
+.tech-card-container {
+    padding: 1rem; /* Provides space around each card for glows */
+}
+
+.tech-card {
+    display: flex !important; /* Override slick display */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* The hover effect: lift the card and make its contents pop */
+.tech-card:hover {
+    transform: translateY(-15px);
+}
+
+
+/* ==========================================================================
+   Icon Wrapper - The circle around the image
+   ========================================================================== */
+
+.tech-icon-wrapper {
+    width: 100px; /* Increased size for more impact */
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(13, 36, 68, 0.6); /* Dark, semi-transparent inner circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    /* The main neon glow effect */
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3), 
+                inset 0 0 10px rgba(0, 255, 255, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+/* The animated, rotating border that appears on hover */
+.tech-icon-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    border-radius: 50%;
+    background: conic-gradient(
+        from 180deg at 50% 50%,
+        rgba(0, 255, 255, 0) 0%,
+        #00ffff 50%,
+        rgba(0, 255, 255, 0) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    animation: rotate-border 4s linear infinite;
+}
+
+@keyframes rotate-border {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* On hover, brighten the glows and reveal the animated border */
+.tech-card:hover .tech-icon-wrapper {
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.7), 
+                inset 0 0 15px rgba(0, 255, 255, 0.4);
+    border-color: rgba(0, 255, 255, 0.8);
+}
+
+.tech-card:hover .tech-icon-wrapper::before {
     opacity: 1;
-  }
-  100% {
-    transform: translateX(-100%); /* Move out to the left */
-    opacity: 0; /* Fade out */
-  }
 }
 
-.fade-in {
-  animation: fadeIn 1s forwards;
+
+/* ==========================================================================
+   Icon & Text Styling
+   ========================================================================== */
+
+.tech-icon {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+    /* Start the icons as grayscale for a 'powered-down' look */
+    filter: grayscale(80%) brightness(0.8);
+    transition: all 0.3s ease-in-out;
 }
 
-@keyframes fadeIn {
-  0% {
-    transform: translateX(100%); /* Start from the right */
-    opacity: 0; /* Fade in */
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-.slide-item a {
-  display: inline-block;
+/* On hover, bring the icon to full color and brightness */
+.tech-card:hover .tech-icon {
+    filter: grayscale(0%) brightness(1.1);
+    transform: scale(1.1);
 }
 
-.slide-item .slide-image {
-  transition: transform 0.3s ease; /* Smooth zoom transition */
-  cursor: pointer; /* Pointer cursor on hover */
+.tech-name {
+    margin-top: 1rem;
+    color: #cbd5e1; /* A softer white (slate-300) */
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.05em; /* Wider spacing for a techy feel */
+    transition: all 0.3s ease-in-out;
 }
 
-.slide-item:hover .slide-image {
-  transform: scale(1.1); /* Zoom-in effect */
+/* On hover, make the text glow with the theme color */
+.tech-card:hover .tech-name {
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+}
+
+
+.slick-track {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.slick-slide {
+    padding: 0 10px; /* Adds a bit of space between slides */
 }

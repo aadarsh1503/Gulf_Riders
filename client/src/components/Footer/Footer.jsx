@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Import useEffect
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaGithub, FaTwitter, FaInstagram, FaEnvelope } from 'react-icons/fa';
 import i1 from "./i1.png";
@@ -8,8 +8,7 @@ import i1 from "./i1.png";
 const socialLinks = [
   { name: 'Facebook', href: '#', Icon: FaFacebookF },
   { name: 'Twitter', href: '#', Icon: FaTwitter },
-  { name: 'Instagram', href: '', Icon: FaInstagram },
-  // Let's add GitHub to the example as well
+  { name: 'Instagram', href: '', Icon: FaInstagram }, // Will not be rendered
   { name: 'Github', href: '#', Icon: FaGithub },
 ];
 
@@ -19,35 +18,44 @@ const Footer = () => {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // A more robust way to clear the message after a delay
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage('');
+      }, 5000); // Clear message after 5 seconds
+
+      // Cleanup function to clear the timer if the component unmounts or message changes
+      return () => clearTimeout(timer);
+    }
+  }, [message]); // This effect runs whenever the 'message' state changes
+
   const handleSubscribe = async (e) => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email)) {
       setMessage('Please enter a valid email address.');
-      setTimeout(() => setMessage(''), 3000); // Clear message after 3 seconds
       return;
     }
     setLoading(true);
     try {
       const formData = new FormData();
       formData.append('email', email);
-  
-      formData.append('list', 'EqD892kQNdUh2MYkG4rXLvlQ');
+      formData.append('list', 'WLefYS158OZsLF4bmjAv1A');
       formData.append('subform', 'yes');
 
-
       await fetch('https://send.alzyara.com/subscribe', {
-        method: 'POST', 
+        method: 'POST',
         body: formData,
         mode: 'no-cors',
       });
       setMessage('Thank you! You are now subscribed.');
       setEmail('');
     } catch (error) {
+      console.error('Subscription Error:', error); // Log the actual error for debugging
       setMessage('Subscription failed. Please try again.');
     } finally {
       setLoading(false);
-      setTimeout(() => setMessage(''), 5000); // Clear the message after 5 seconds
     }
   };
 
@@ -67,8 +75,8 @@ const Footer = () => {
           <div className="mb-6">
             <img
               src={i1}
-              alt="Logo"
-              className="h-48 w-auto" // More refined logo size
+              alt="Gulf Riders Logo" // More descriptive alt text
+              className="h-48 w-auto"
             />
           </div>
 
@@ -77,7 +85,7 @@ const Footer = () => {
             Achieve Excellence with Gulf Riders: Simplify your workflow and create impactful dashboards effortlessly with our advanced template. Instead of starting from scratch with complex coding in Blade.php, SCSS, CSS, and JS, you can leverage this well-structured solution to craft stunning, user-friendly dashboards that impress your users and streamline your processes. Say goodbye to missteps and inefficiencies—our template empowers you to focus on what truly matters: delivering exceptional results.
           </p>
 
-          {/* --- Sexy Newsletter Section --- */}
+          {/* --- Newsletter Section --- */}
           <div className="my-12 w-full max-w-xl">
             <h2 className="text-2xl font-bold text-white mb-2">
               Stay Updated
@@ -86,10 +94,17 @@ const Footer = () => {
               Subscribe to our newsletter for the latest news, updates, and special offers delivered right to your inbox.
             </p>
             <form onSubmit={handleSubscribe}>
+              {/* Added a label for accessibility */}
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
               <div className="flex items-center bg-white/10 border border-white/20 rounded-full p-2 shadow-lg focus-within:ring-2 focus-within:ring-white/50 transition-all duration-300">
-                <FaEnvelope className="text-gray-400 text-xl mx-4" aria-hidden="true" />
+                <FaEnvelope className="text-gray-400 text-xl mx-4 flex-shrink-0" aria-hidden="true" />
                 <input
+                  id="email-address"
+                  name="email-address" // Good practice for forms
                   type="email"
+                  autoComplete="off" // Prevents browser autofill suggestions
                   placeholder="your.email@example.com"
                   className="w-full bg-transparent outline-none text-white placeholder-gray-400"
                   value={email}
@@ -99,12 +114,12 @@ const Footer = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="bg-white text-dblue rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 disabled:bg-gray-600 disabled:text-gray-400 disabled:scale-100"
+                  className="bg-white text-dblue rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
                 >
                   {loading ? 'Submitting...' : 'Subscribe'}
                 </button>
               </div>
-              {message && <p className="text-sm mt-4 text-gray-300">{message}</p>}
+              {message && <p className="text-sm mt-4 text-gray-300 transition-opacity duration-300">{message}</p>}
             </form>
           </div>
           {/* --- End Newsletter Section --- */}
@@ -117,10 +132,12 @@ const Footer = () => {
             </p>
             <div className="mt-6 flex justify-center space-x-6">
               {socialLinks.map((item) => (
-                item.href && ( // This condition ensures only icons with a link are rendered
+                item.href && (
                   <a
                     key={item.name}
                     href={item.href}
+                    target="_blank" // Open social links in a new tab
+                    rel="noopener noreferrer" // Security best practice for target="_blank"
                     className="text-gray-400 hover:text-white transition-colors duration-300"
                   >
                     <span className="sr-only">{item.name}</span>
